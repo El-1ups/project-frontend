@@ -1,88 +1,84 @@
-import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Navigate } from 'react-router-dom'
 
 import { signIn } from '../../api/auth'
-import { signInSuccess, signInFailure } from '../AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import { signInFailure, signInSuccess } from '../AutoDismissAlert/messages'
 
-class SignIn extends Component {
-  constructor (props) {
-    super(props)
+// accept a setUser prop, that is passed down from App.js
+const SignIn = ({ setUser, msgAlert }) => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [shouldNavigate, setShouldNavigate] = useState(false)
 
-    this.state = {
-      email: '',
-      password: ''
+  const onSignIn = async (event) => {
+    event.preventDefault()
+
+    try {
+      const res = await signIn(email, password)
+      // Set the user with the one from our response's data
+      // this is similar to store.user = responseData.user in jquery
+      setUser(res.data.user)
+
+      console.log('res is', res)
+      msgAlert({
+        heading: 'Sign Up Success',
+        message: signInSuccess,
+        // this will be green
+        variant: 'success'
+      })
+      // this will cause the browser to navigate to the home page
+      setShouldNavigate(true)
+    } catch (error) {
+      msgAlert({
+        heading: 'Sign Up Failed with error: ' + error.message,
+        message: signInFailure,
+        // this will be red
+        variant: 'danger'
+      })
+      console.error(error)
+      setEmail('')
+      setPassword('')
     }
   }
 
-handleChange = (event) =>
-  this.setState({
-    [event.target.name]: event.target.value
-  })
-
-onSignIn = (event) => {
-  event.preventDefault()
-
-  const { msgAlert, history, setUser } = this.props
-
-  signIn(this.state)
-    .then((res) => setUser(res.data.user))
-    .then(() =>
-      msgAlert({
-        heading: 'Sign In Success',
-        message: signInSuccess,
-        variant: 'success'
-      })
-    )
-    .then(() => history.push('/'))
-    .catch((error) => {
-      this.setState({ email: '', password: '' })
-      msgAlert({
-        heading: 'Sign In Failed with error: ' + error.message,
-        message: signInFailure,
-        variant: 'danger'
-      })
-    })
-}
-
-render () {
-  const { email, password } = this.state
+  if (shouldNavigate) {
+    return <Navigate to='/' />
+  }
 
   return (
     <div className='row'>
       <div className='col-sm-10 col-md-8 mx-auto mt-5'>
         <h3>Sign In</h3>
-        <Form onSubmit={this.onSignIn}>
-          <Form.Group controlId='email'>
+        <Form onSubmit={onSignIn}>
+          <Form.Group className='mb-3' controlId='email'>
             <Form.Label>Email address</Form.Label>
             <Form.Control
               required
               type='email'
-              name='email'
               value={email}
               placeholder='Enter email'
-              onChange={this.handleChange}
+              onChange={(event) => setEmail(event.target.value)}
             />
           </Form.Group>
-          <Form.Group controlId='password'>
+          <Form.Group className='mb-3' controlId='password'>
             <Form.Label>Password</Form.Label>
             <Form.Control
               required
-              name='password'
               value={password}
               type='password'
               placeholder='Password'
-              onChange={this.handleChange}
+              onChange={(event) => setPassword(event.target.value)}
             />
           </Form.Group>
-          <Button variant='primary' type='submit'>Submit</Button>
+          <Button variant='primary' type='submit' className='text-white'>Submit
+          </Button>
         </Form>
       </div>
     </div>
   )
 }
-}
 
-export default withRouter(SignIn)
+export default SignIn
