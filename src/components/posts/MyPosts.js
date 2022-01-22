@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { Link, Navigate } from 'react-router-dom'
 
 import { Spinner } from 'react-bootstrap'
-import { indexPosts } from '../../api/posts'
+import { indexMyPosts } from '../../api/posts'
 
-const Posts = ({ user, msgAlert }) => {
+const MyPosts = ({ user, msgAlert }) => {
   const [posts, setPosts] = useState(null)
 
   // if user is null, redirect to home page
@@ -20,7 +20,7 @@ const Posts = ({ user, msgAlert }) => {
     // https://stackoverflow.com/a/53572588
     const fetchData = async () => {
       try {
-        const res = await indexPosts(user)
+        const res = await indexMyPosts(user)
         setPosts(res.data.posts)
       } catch (error) {
         msgAlert({
@@ -52,11 +52,11 @@ const Posts = ({ user, msgAlert }) => {
   return (
     <div className='row'>
       <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-        <h3>Posts</h3>
+        <h3>Your Posts</h3>
         <ul>{postsList}</ul>
       </div>
     </div>
   )
 }
 
-export default Posts
+export default MyPosts

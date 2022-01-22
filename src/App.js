@@ -15,6 +15,7 @@ import Post from './components/posts/Post'
 import PostCreate from './components/posts/PostCreate'
 import PostEdit from './components/posts/PostEdit'
 import Posts from './components/posts/Posts'
+import MyPosts from './components/posts/MyPosts'
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -66,6 +67,8 @@ const App = () => {
           <Route path='/'
             element={<Home />} />
           <Route path='/posts' element={<Posts msgAlert={msgAlert} user={user} />} />
+          <Route path='/posts' element={<Posts msgAlert={msgAlert} user={user} />} />
+          <Route path='/myposts' element={<MyPosts msgAlert={msgAlert} user={user}/>} />
           <Route path='/posts/:id' element={<Post msgAlert={msgAlert} user={user} />} />
           <Route path='/posts/create' element={<PostCreate msgAlert={msgAlert} user={user} />} />
           <Route path='/posts/:id/edit' element={<PostEdit msgAlert={msgAlert} user={user} />} />

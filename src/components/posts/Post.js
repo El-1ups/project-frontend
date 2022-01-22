@@ -63,7 +63,7 @@ const Post = ({ user, msgAlert }) => {
       <div className='row'>
         <div className='col-sm-10 col-md-8 mx-auto mt-5'>
           <h3>{post.title}</h3>
-          <p>Director: {post.director}</p>
+          <p>Body: {post.content}</p>
           <Button variant='danger' onClick={handleDeleteClick}>Delete Post</Button>
           <Link to={`/posts/${id}/edit`}>
             <Button variant='primary' type='submit'>Update Post</Button>
