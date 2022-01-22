@@ -24,7 +24,7 @@ const SignUp = ({ setUser, msgAlert }) => {
       // to use `async/await`, put the `await` keyword before the
       // function that returns a promise
       await signUp(email, password, passwordConfirmation)
-      // if we signed up successfully, then make a signIn axios request
+      // if we signed up successfully, then make a signIn    request
       // these two lines are the same from SignIn
       const res = await signIn(email, password)
       setUser(res.data.user)
