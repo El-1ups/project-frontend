@@ -24,7 +24,7 @@ const ChangePassword = ({ user, msgAlert }) => {
       // function that returns a promise
       await changePassword(oldPassword, newPassword, user)
       msgAlert({
-        heading: 'Sign Up Success',
+        heading: 'Change Password Success',
         message: changePasswordSuccess,
         // this will be green
         variant: 'success'
@@ -33,7 +33,7 @@ const ChangePassword = ({ user, msgAlert }) => {
       setShouldNavigate(true)
     } catch (error) {
       msgAlert({
-        heading: 'Sign Up Failed with error: ' + error.message,
+        heading: 'Change Password Failed with error: ' + error.message,
         message: changePasswordFailure,
         // this will be red
         variant: 'danger'
@@ -85,7 +85,11 @@ const ChangePassword = ({ user, msgAlert }) => {
               type='password'
               value={oldPassword}
               placeholder='Enter password'
-              onChange={(event) => setOldPassword(event.target.value)}
+              onChange={(event) => {
+                setOldPassword(event.target.value)
+                console.log(event.target.value)
+              }
+              }
             />
           </Form.Group>
 
