@@ -43,7 +43,7 @@ const Posts = ({ user, msgAlert }) => {
   }
 
   // Otherwise, display the posts
-  const postsList = posts.map((post) => (
+  const postsList = posts.map(post => (
     <li key={post._id}>
       <Link to={`/posts/${post._id}`}>{post.title}</Link>
     </li>

@@ -16,7 +16,7 @@ Change Password
 Sign Out
     </NavLink>
     <NavLink to='/posts' className='nav-link'>
-Posts
+My Posts
     </NavLink>
     <NavLink to='/posts/create' className='nav-link'>
 Make a Post
