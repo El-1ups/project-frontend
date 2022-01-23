@@ -18,9 +18,9 @@ Sign Out
     <NavLink to='/myposts' className='nav-link'>
 My Posts
     </NavLink>
-    <NavLink to='/posts' className='nav-link'>
+    {/* <NavLink to='/posts' className='nav-link'>
 Posts
-    </NavLink>
+    </NavLink> */}
     <NavLink to='/posts/create' className='nav-link'>
 Make a Post
     </NavLink>
