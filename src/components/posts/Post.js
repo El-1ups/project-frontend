@@ -57,6 +57,15 @@ const Post = ({ user, msgAlert }) => {
     )
   } else if (deleted) {
     return <Navigate to='/posts' />
+  } else if (user._id !== post.owner) {
+    // We have a post, display it!
+    return (
+      <div className='row'>
+        <div className='col-sm-10 col-md-8 mx-auto mt-5'>
+          <h3>{post.title}</h3>
+          <p>Body: {post.content}</p>
+        </div>
+      </div>)
   } else {
     // We have a post, display it!
     return (
@@ -64,9 +73,13 @@ const Post = ({ user, msgAlert }) => {
         <div className='col-sm-10 col-md-8 mx-auto mt-5'>
           <h3>{post.title}</h3>
           <p>Body: {post.content}</p>
-          <Button variant='danger' onClick={handleDeleteClick}>Delete Post</Button>
+          <Button variant='danger' onClick={handleDeleteClick}>
+Delete Post
+          </Button>
           <Link to={`/posts/${id}/edit`}>
-            <Button variant='primary' type='submit'>Update Post</Button>
+            <Button variant='primary' type='submit'>
+Update Post
+            </Button>
           </Link>
         </div>
       </div>
