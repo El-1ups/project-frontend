@@ -4,7 +4,7 @@ import { NavLink, Link } from 'react-router-dom'
 // import Navbar from 'react-bootstrap/Navbar'
 // import Container from 'react-bootstrap/Container'
 // import Nav from 'react-bootstrap/Nav'
-import { Navbar, Nav, Container } from 'react-bootstrap'
+import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
 
 // These are the links you'll see if you're signed in
 const authenticatedOptions = (
@@ -15,20 +15,24 @@ My Posts
     <NavLink to='/posts/create' className='nav-link'>
 Make a Post
     </NavLink>
-    <NavLink to='/change-password' className='nav-link'>
+    <NavDropdown>
+      <NavLink to='/change-password' className='nav-link'>
 Change Password
-    </NavLink>
-    <NavLink to='/sign-out' className='nav-link'>
+      </NavLink>
+      <NavLink to='/sign-out' className='nav-link'>
 Sign Out
-    </NavLink>
+      </NavLink>
+    </NavDropdown>
   </>
 )
 
 // These are the links you'll see if you're signed out
 const unauthenticatedOptions = (
   <>
-    <NavLink to='/sign-up' className='nav-link'>Sign Up</NavLink>
-    <NavLink to='/sign-in' className='nav-link'>Sign In</NavLink>
+    <NavDropdown>
+      <NavLink to='/sign-up' className='nav-link'>Sign Up</NavLink>
+      <NavLink to='/sign-in' className='nav-link'>Sign In</NavLink>
+    </NavDropdown>
   </>
 )
 
