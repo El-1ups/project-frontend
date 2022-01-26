@@ -62,7 +62,7 @@ const Post = ({ user, msgAlert }) => {
         <div className='row'>
           <div className='col-sm-10 col-md-8 mx-auto mt-5'>
             <h3>{post.title}</h3>
-            <p>Body: {post.content}</p>
+            <p>{post.content}</p>
           </div>
         </div>
         // ** add comment component ? **
@@ -73,7 +73,7 @@ const Post = ({ user, msgAlert }) => {
         <div className='row'>
           <div className='col-sm-10 col-md-8 mx-auto mt-5'>
             <h3>{post.title}</h3>
-            <p>Body: {post.content}</p>
+            <p>{post.content}</p>
             <Button variant='danger' onClick={handleDeleteClick}>
 Delete Post
             </Button>
@@ -92,7 +92,7 @@ Update Post
       <div className='row'>
         <div className='col-sm-10 col-md-8 mx-auto mt-5'>
           <h3>{post.title}</h3>
-          <p>Body: {post.content}</p>
+          <p>{post.content}</p>
         </div>
       </div>
     )
