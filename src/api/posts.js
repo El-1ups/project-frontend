@@ -14,14 +14,9 @@ export const createPost = (title, content, user) => {
   )
 }
 
-export const indexPosts = (user) => {
-  return axios.get(`${apiUrl}/posts`,
-    {
-      headers: {
-        Authorization: `Bearer ${user.token}`
-      }
-    }
-  )
+// index posts
+export const indexPosts = () => {
+  return axios.get(`${apiUrl}/posts`)
 }
 
 export const indexMyPosts = (user) => {
@@ -32,11 +27,8 @@ export const indexMyPosts = (user) => {
   })
 }
 
-export const showPost = (id, user) => {
+export const showPost = (id) => {
   return axios.get(`${apiUrl}/posts/${id}/`, {
-    headers: {
-      Authorization: `Bearer ${user.token}`
-    }
   })
 }
 

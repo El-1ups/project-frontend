@@ -11,9 +11,6 @@ const Post = ({ user, msgAlert }) => {
 
   // if user is null, redirect to home page
   // Note: Must check before useEffect, since it needs user
-  if (!user) {
-    return <Navigate to='/' />
-  }
 
   useEffect(() => {
     // When using async & await in a `useEffect` function
@@ -21,7 +18,7 @@ const Post = ({ user, msgAlert }) => {
     // https://stackoverflow.com/a/53572588
     const fetchData = async () => {
       try {
-        const res = await showPost(id, user)
+        const res = await showPost(id)
         setPost(res.data.post)
       } catch (error) {
         msgAlert({
@@ -33,7 +30,6 @@ const Post = ({ user, msgAlert }) => {
     }
     fetchData()
   }, [])
-
   const handleDeleteClick = async () => {
     try {
       await deletePost(id, user)
@@ -57,17 +53,46 @@ const Post = ({ user, msgAlert }) => {
     )
   } else if (deleted) {
     return <Navigate to='/posts' />
+  } else if (user) {
+    if (user._id !== post.owner) {
+      // console.log(user._id)
+      // console.log(post.owner)
+      // We have a post, display it!
+      return (
+        <div className='row'>
+          <div className='col-sm-10 col-md-8 mx-auto mt-5'>
+            <h3>{post.title}</h3>
+            <p>Body: {post.content}</p>
+          </div>
+        </div>
+        // ** add comment component ? **
+      )
+    } else {
+      // We have a post, display it!
+      return (
+        <div className='row'>
+          <div className='col-sm-10 col-md-8 mx-auto mt-5'>
+            <h3>{post.title}</h3>
+            <p>Body: {post.content}</p>
+            <Button variant='danger' onClick={handleDeleteClick}>
+Delete Post
+            </Button>
+            <Link to={`/posts/${id}/edit`}>
+              <Button variant='primary' type='submit'>
+Update Post
+              </Button>
+            </Link>
+          </div>
+        </div>
+      )
+    }
   } else {
-    // We have a post, display it!
+    // Unauthenticated View
     return (
       <div className='row'>
         <div className='col-sm-10 col-md-8 mx-auto mt-5'>
           <h3>{post.title}</h3>
           <p>Body: {post.content}</p>
-          <Button variant='danger' onClick={handleDeleteClick}>Delete Post</Button>
-          <Link to={`/posts/${id}/edit`}>
-            <Button variant='primary' type='submit'>Update Post</Button>
-          </Link>
         </div>
       </div>
     )
