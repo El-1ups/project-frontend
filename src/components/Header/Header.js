@@ -9,17 +9,17 @@ import { Navbar, Nav, Container } from 'react-bootstrap'
 // These are the links you'll see if you're signed in
 const authenticatedOptions = (
   <>
-    <NavLink to='/change-password' className='nav-link'>
-Change Password
-    </NavLink>
-    <NavLink to='/sign-out' className='nav-link'>
-Sign Out
-    </NavLink>
     <NavLink to='/myposts' className='nav-link'>
 My Posts
     </NavLink>
     <NavLink to='/posts/create' className='nav-link'>
 Make a Post
+    </NavLink>
+    <NavLink to='/change-password' className='nav-link'>
+Change Password
+    </NavLink>
+    <NavLink to='/sign-out' className='nav-link'>
+Sign Out
     </NavLink>
   </>
 )
@@ -45,7 +45,7 @@ const Header = ({ user }) => (
       <Navbar.Brand>
         {/* Text decoration: none, will remove the underline text decoration
             from the link */}
-        <Link to='/' style={{ color: '#FFF', textDecoration: 'none' }}>myMDB
+        <Link to='/' style={{ color: '#FFF', textDecoration: 'none' }}>MessageBoard
         </Link>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls='basic-navbar-nav' />
