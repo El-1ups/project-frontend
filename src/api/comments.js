@@ -18,7 +18,11 @@ export const changeComment = (id, text) => {
   return axios({
     url: apiUrl + `/comments/${id}`,
     method: 'PATCH',
-    comment: { text }
+    data: {
+      comment: {
+        text
+      }
+    }
   })
 }
 
