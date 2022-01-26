@@ -14,6 +14,7 @@ export const createPost = (title, content, user) => {
   )
 }
 
+// index posts
 export const indexPosts = () => {
   return axios.get(`${apiUrl}/posts`)
 }
