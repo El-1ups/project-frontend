@@ -38,16 +38,16 @@ const Home = ({ msgAlert }) => {
 
   // Otherwise, display the posts
   const postsList = posts.map((post) => (
-    <li key={post._id}>
+    <div className = "post-list-item" key={post._id}>
       <Link to={`/posts/${post._id}`}>{post.title}</Link>
-    </li>
+    </div>
   ))
 
   return (
     <div className='row'>
-      <div className='col-sm-10 col-md-8 mx-auto mt-5'>
+      <div className='post-list'>
         <h3>Posts</h3>
-        <ul>{postsList}</ul>
+        <div>{postsList}</div>
       </div>
     </div>
   )

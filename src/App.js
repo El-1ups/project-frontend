@@ -35,7 +35,7 @@ const App = () => {
   return (
     <>
       <Header user={user} />
-      {msgAlerts.map(msgAlert => (
+      {msgAlerts.map((msgAlert) => (
         <AutoDismissAlert
           key={msgAlert.id}
           heading={msgAlert.heading}
@@ -49,29 +49,48 @@ const App = () => {
         <Routes>
           <Route
             path='/sign-up'
-            element={<SignUp msgAlert={msgAlert} setUser={setUser} /> }
+            element={<SignUp msgAlert={msgAlert} setUser={setUser} />}
           />
           <Route
             path='/sign-in'
-            element={<SignIn msgAlert={msgAlert} setUser={setUser} /> }
+            element={<SignIn msgAlert={msgAlert} setUser={setUser} />}
           />
           <Route
             path='/sign-out'
-            element={<SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} /> }
+            element={
+              <SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} />
+            }
           />
           <Route
             path='/change-password'
-            element={<ChangePassword msgAlert={msgAlert} user={user} /> }
+            element={<ChangePassword msgAlert={msgAlert} user={user} />}
           />
 
-          <Route path='/'
-            element={<Home />} />
-          <Route path='/posts' element={<Posts msgAlert={msgAlert} user={user} />} />
-          <Route path='/posts' element={<Posts msgAlert={msgAlert} user={user} />} />
-          <Route path='/myposts' element={<MyPosts msgAlert={msgAlert} user={user}/>} />
-          <Route path='/posts/:id' element={<Post msgAlert={msgAlert} user={user} />} />
-          <Route path='/posts/create' element={<PostCreate msgAlert={msgAlert} user={user} />} />
-          <Route path='/posts/:id/edit' element={<PostEdit msgAlert={msgAlert} user={user} />} />
+          <Route path='/' element={<Home msgAlert={msgAlert} />} />
+          <Route
+            path='/posts'
+            element={<Posts msgAlert={msgAlert} user={user} />}
+          />
+          <Route
+            path='/posts'
+            element={<Posts msgAlert={msgAlert} user={user} />}
+          />
+          <Route
+            path='/myposts'
+            element={<MyPosts msgAlert={msgAlert} user={user} />}
+          />
+          <Route
+            path='/posts/:id'
+            element={<Post msgAlert={msgAlert} user={user} />}
+          />
+          <Route
+            path='/posts/create'
+            element={<PostCreate msgAlert={msgAlert} user={user} />}
+          />
+          <Route
+            path='/posts/:id/edit'
+            element={<PostEdit msgAlert={msgAlert} user={user} />}
+          />
         </Routes>
       </main>
     </>

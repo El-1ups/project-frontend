@@ -61,7 +61,7 @@ const Post = ({ user, msgAlert }) => {
       return (
         <div className='row'>
           <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-            <h3>{post.title}</h3>
+            <h3 className="post-title">{post.title}</h3>
             <p>{post.content}</p>
           </div>
         </div>

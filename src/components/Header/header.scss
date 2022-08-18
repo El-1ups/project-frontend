@@ -1,0 +1,44 @@
+.collapsable {
+    // background-color: darkgrey;
+    color: black;
+    padding: 0.5rem 1rem;
+}
+
+.collapsable>.dropped {
+    color: black!important;
+    margin-left: 1rem;
+}
+
+.dropdown-menu>.dropped {
+    color: black!important;
+    margin-left: 1rem;
+}
+
+.dropped {
+    color: black !important;
+}
+
+.home-link {
+    
+}
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.navbar-text {
+    color: white!important;
+}
+
+.nav-link {
+    color: white!important;
+}
+
+.dropdown-menu {
+    transform: translatex(-7rem);
+}
+
+.banner {
+    // display:inline;
+    // font-size: 2vw;
+}

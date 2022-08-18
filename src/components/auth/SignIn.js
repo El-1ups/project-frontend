@@ -24,7 +24,7 @@ const SignIn = ({ setUser, msgAlert }) => {
 
       console.log('res is', res)
       msgAlert({
-        heading: 'Sign Up Success',
+        heading: 'Sign In Success',
         message: signInSuccess,
         // this will be green
         variant: 'success'
@@ -33,7 +33,7 @@ const SignIn = ({ setUser, msgAlert }) => {
       setShouldNavigate(true)
     } catch (error) {
       msgAlert({
-        heading: 'Sign Up Failed with error: ' + error.message,
+        heading: 'Sign In Failed with error: ' + error.message,
         message: signInFailure,
         // this will be red
         variant: 'danger'
